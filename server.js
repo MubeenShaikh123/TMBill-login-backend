@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import authRoutes from './routes/auth.js';
+import todoRoutes from './routes/todo.js';
 
 dotenv.config();
 connectDB();
@@ -16,9 +17,10 @@ app.use(express.json());
 
 // Routes
 app.use('/api', authRoutes);
+app.use('/api/todo', todoRoutes);
 
 // Protected example
-import { protect } from './middleware/auth.js';
+import protect from './middleware/auth.js';
 app.get('/api/protected', protect, (req, res) => {
     res.json({ message: `Hello user ${req.user}` });
 });

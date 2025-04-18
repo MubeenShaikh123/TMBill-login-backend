@@ -141,8 +141,6 @@ router.post('/verify-session', async (req, res) => {
     // Verify the token using the secret
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    console.log(`decoded: ${JSON.stringify(decoded)}`)
-
     // Respond with the user details if the token is valid
     res.json({
       message: 'Session verified successfully',
