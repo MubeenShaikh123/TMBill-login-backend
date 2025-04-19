@@ -1,4 +1,3 @@
-// routes/auth.js
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -47,7 +46,7 @@ router.post('/register', async (req, res) => {
 
     await user.save();
 
-    // Optionally, delete the used OTP
+    // delete the used OTP
     await Otp.deleteMany({ email });
 
     res.status(201).json({ user: { email: user.email, id: user._id, name: user.name } });
@@ -133,7 +132,6 @@ router.post('/verify-session', async (req, res) => {
   const token = req.headers['authorization']?.split(' ')[1];
 
   if (!token) {
-    console.log(`token: ${token}`)
     return res.status(400).json({ message: 'Token is required' });
   }
 

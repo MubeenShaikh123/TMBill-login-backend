@@ -1,4 +1,3 @@
-// server.js
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -18,12 +17,6 @@ app.use(express.json());
 // Routes
 app.use('/api', authRoutes);
 app.use('/api/todo', todoRoutes);
-
-// Protected example
-import protect from './middleware/auth.js';
-app.get('/api/protected', protect, (req, res) => {
-    res.json({ message: `Hello user ${req.user}` });
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
