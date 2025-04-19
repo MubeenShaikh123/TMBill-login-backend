@@ -114,7 +114,7 @@ router.post('/sendotp', async (req, res) => {
     const existingOtp = await Otp.findOne({ email });
 
     if (existingOtp) {
-      return res.status(400).json({ message: 'OTP already sent' });
+      return res.status(200).json({ message: 'OTP already sent' });
     }
 
     const newOtp = new Otp({ email, otp });
